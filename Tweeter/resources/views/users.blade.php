@@ -3,7 +3,7 @@
 @php
     function checkFollowing ($userTocheck, $follows) {
         foreach ($follows as $follow) {
-            if ($follow->followed_id==$userTocheck) {
+            if ($follow->followed_id==$userTocheck && $follow->user_id==Auth::user()->id) {
                 return true;
             }
         }

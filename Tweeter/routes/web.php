@@ -22,8 +22,14 @@ Route::get('/userProfile', 'userController@showProfile');
 Route::post('editProfile', 'userController@showProfileEdit');
 Route::post('/updateProfile', 'userController@updateProfile');
 Route::post('/deleteProfile', 'userController@deleteProfile');
-Route::post('/confirmDelete', 'feedController@confirmDelete'); //is confirming if the user wants to delete
-Route::post('/deleteTweet', 'feedController@deleteTweet'); //is deleting a tweet if the user confirmed
+Route::post('/confirmDelete', 'userController@confirmDelete'); //is confirming if the user wants to delete
+Route::post('/deleteTweet', 'userController@deleteTweet'); //is deleting a tweet if the user confirmed
 Route::post('/findUsers','followController@showUsers'); // when an user click in find user, this route goes to show all users
-Route::post('/followUser','followController@changeFollow');
-Route::post('/createTweet', 'userController@createForm');
+Route::post('/followUser','followController@changeFollow'); // is creating relationship between the users (follow or unfollow)
+Route::post('/createForm', 'userController@createForm'); // form to create a new tweet
+Route::post('/createTweet', 'userController@createTweet'); // create a new tweet
+Route::post('/editForm','userController@editForm'); // form tweet
+Route::post('/editTweet','userController@editTweet');// create a existed tweet
+Route::get('/readTweets','feedController@showTweets'); //page to read all tweets but yours
+Route::post('/commentForm','feedController@commentForm'); // page to comment one tweet - form
+Route::post('/commentTweet', 'feedController@commentTweet'); // add comment on database

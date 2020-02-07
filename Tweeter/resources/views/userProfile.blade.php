@@ -15,6 +15,7 @@
         @csrf
         <button type="submit" value="Edit"> Edit profile</button>
     </form>
+
     <form action="/deleteProfile" method="post">
         @csrf
         <button type="submit" value="Delete"> Delete profile</button>
@@ -29,10 +30,14 @@
 
     <br><br>
     @foreach ($tweetsInfo as $tweetInfo)
+    @php
+    $date=$tweetInfo['created_at'];
+    $date=substr($date,0,10);
+     @endphp
 
     @if ($tweetInfo['userId']==Auth::user()->id)
         <p>{{$tweetInfo['content']}}</p>
-        <p>{{$tweetInfo['created_at']}}</p>
+        <p>{{$date}}</p>
         <p>{{$tweetInfo['name']}}</p>
         <form action="/confirmDelete" method="post">
             @csrf
@@ -45,19 +50,6 @@
 
     @endif
     @endforeach
-
-    @foreach ($tweetsInfo as $tweetInfo)
-
-    @if ($tweetInfo['userId']!=Auth::user()->id)
-    <p>{{$tweetInfo['content']}}</p>
-    <p>{{$tweetInfo['created_at']}}</p>
-    <p>{{$tweetInfo['name']}}</p>
-
-    @endif
-
-    @endforeach
-
-
 
 
 @endsection

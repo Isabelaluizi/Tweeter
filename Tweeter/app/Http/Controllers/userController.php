@@ -28,6 +28,16 @@ class userController extends Controller
             return redirect('/');
         }
     }
+    function confirmDelete (Request $request) {
+        $deleteTweet=\App\Tweet::find($request->tweetId); // is passing Tweet that wants to delete
+        return view ('confirmDelete',['deleteTweet'=>$deleteTweet]);
+    }
+    function deleteTweet (Request $request) {
+        if ($request->option=='yes') {
+            \App\Tweet::destroy($request->tweetId);
+        }
+        return redirect('/userProfile');
+    }
     function showProfileEdit() {
         return view('showProfileEditForm');
     }
@@ -38,6 +48,28 @@ class userController extends Controller
     function deleteProfile(Request $request) {
         \App\User::destroy(Auth::user()->id);
         return redirect('/');
+    }
+    function createForm () {
+        return view('createForm');
+    }
+    function createTweet (Request $request) {
+        $tweet= new \App\Tweet;
+            $tweet->user_id = Auth::user()->id;
+            $tweet->content = $request->content;
+            $tweet->save();
+            return redirect ('userProfile');
+    }
+    function editForm (Request $request) {
+        $tweet= \App\Tweet::find($request->tweetId);
+        return view('editForm',['tweet'=>$tweet]);
+    }
+    function editTweet (Request $request) {
+        $tweet = \App\Tweet::find($request->tweetId);
+        $tweet->content = $request->content;
+        $tweet->user_id = Auth::user()->id;
+        $tweet->created_at = $request->created_at;
+        $tweet->save();
+        return redirect ('userProfile');
     }
 
 }
