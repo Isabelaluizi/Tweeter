@@ -16,7 +16,6 @@
 @include('createTweetForm')
 
  @foreach ($tweetsInfo as $tweetInfo)
-        @if($tweetInfo['userId']==Auth::user()->id)
             @php
             $date=$tweetInfo['created_at'];
             $date=substr($date,0,10);
@@ -25,8 +24,8 @@
                 <p>{{$tweetInfo['content']}}</p>
                 <p>{{$date}}</p>
                 <p>{{$tweetInfo['name']}}</p>
-                @include('partialconfirmDelete')
             </a>
+
             <form action="/commentForm" method="post">
                 @csrf
                 <button type="submit" name="tweetId" value={{$tweetInfo['tweetId']}}>Comment</button>
@@ -44,6 +43,9 @@
                     <span>Likes:{{$tweetInfo['numLikes']}}</span>
                 </form>
             @endif
+            @if($tweetInfo['userId']==Auth::user()->id)
+            @include('partialconfirmDelete')
+            @include('partialeditForm')
         @endif
 
 

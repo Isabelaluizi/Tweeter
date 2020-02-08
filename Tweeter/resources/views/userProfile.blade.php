@@ -40,10 +40,7 @@
         <p>{{$date}}</p>
         <p>{{$tweetInfo['name']}}</p>
         @include('partialconfirmDelete')
-        <form action="/editForm" method="post">
-            @csrf
-        <button type="submit" name="tweetId" value={{$tweetInfo['tweetId']}}>Edit</button>
-        </form>
+        @include('partialeditForm')
 
     @endif
     @endforeach
