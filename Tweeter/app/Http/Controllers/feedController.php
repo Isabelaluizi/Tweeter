@@ -14,6 +14,9 @@ class feedController extends Controller
         $tweets= \App\Tweet::orderBy("created_at", "desc")->get();
             $tweetInfo=[];
             foreach($tweets as $tweet) {
+                $likes=\App\Like::where("tweet_id","$tweet->id")->get();
+                $num=count($likes);
+                error_log($num);
                 $userId=$tweet->user_id;
                 array_push ($tweetInfo,[
                     "userId"=> "$userId",
@@ -67,6 +70,24 @@ class feedController extends Controller
     }
     function deleteComment (Request $request) {
         \App\Comment::destroy($request->commentId);
+        return redirect ('readTweets');
+    }
+    function editCommentForm (Request $request) {
+        $comment=\App\Comment::find($request->commentId);
+        return view ('editCommentForm', ['comment'=>$comment]);
+    }
+    function editComment (Request $request) {
+        $comment=\App\Comment::find($request->commentId);
+            $comment->content = $request->comment;
+            $comment->created_at = $request->created_at;
+            $comment->save();
+            return redirect ('readTweets');
+    }
+    function addlike (Request $request) {
+        $like = new \App\Like;
+        $like->user_id = Auth::user()->id;
+        $like->tweet_id = $request->tweetId;
+        $like->save();
         return redirect ('readTweets');
     }
 

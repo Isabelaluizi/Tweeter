@@ -35,3 +35,6 @@ Route::post('/commentForm','feedController@commentForm'); // page to comment one
 Route::post('/commentTweet', 'feedController@commentTweet'); // add comment on database
 Route::get('/readTweets/{tweetId}', 'feedController@showComments'); //show tweet and comments related to tweet
 Route::post('deleteComment', 'feedController@deleteComment'); //is deleting a comment
+Route::post('/editCommentForm','feedController@editCommentForm'); //showing edit form
+Route::post('/editComment','feedController@editComment'); //update comment
+Route::post('/likeTweet','feedController@addlike'); //filling the database

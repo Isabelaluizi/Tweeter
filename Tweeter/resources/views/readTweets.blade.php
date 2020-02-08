@@ -18,6 +18,10 @@
             @csrf
             <button type="submit" name="tweetId" value={{$tweetInfo['tweetId']}}>Comment</button>
         </form>
+        <form action="/likeTweet" method="post">
+            @csrf
+            <button type="submit" name="tweetId" value={{$tweetInfo['tweetId']}}>Like</button>
+        </form>
 
     @endif
 
