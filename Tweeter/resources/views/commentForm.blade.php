@@ -7,7 +7,7 @@
 <form action="/commentTweet" method="post">
     @csrf
     <input type="text" name="content" value="Tweet your reply" required>
-    <button type="submit" value={{$tweet->id}}>Reply</button>
+    <button type="submit" name= "tweetId" value={{$tweet->id}}>Reply</button>
 </form>
 
 

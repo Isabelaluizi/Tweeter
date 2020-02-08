@@ -9,9 +9,11 @@
     $date=$tweetInfo['created_at'];
     $date=substr($date,0,10);
      @endphp
+    <a href="/readTweets/{{$tweetInfo['tweetId']}}">
         <p>{{$tweetInfo['content']}}</p>
         <p>{{$date}}</p>
         <p>{{$tweetInfo['name']}}</p>
+    </a>
         <form action="/commentForm" method="post">
             @csrf
             <button type="submit" name="tweetId" value={{$tweetInfo['tweetId']}}>Comment</button>

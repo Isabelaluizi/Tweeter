@@ -33,3 +33,5 @@ Route::post('/editTweet','userController@editTweet');// create a existed tweet
 Route::get('/readTweets','feedController@showTweets'); //page to read all tweets but yours
 Route::post('/commentForm','feedController@commentForm'); // page to comment one tweet - form
 Route::post('/commentTweet', 'feedController@commentTweet'); // add comment on database
+Route::get('/readTweets/{tweetId}', 'feedController@showComments'); //show tweet and comments related to tweet
+Route::post('deleteComment', 'feedController@deleteComment'); //is deleting a comment
