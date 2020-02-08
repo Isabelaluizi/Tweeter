@@ -39,10 +39,7 @@
         <p>{{$tweetInfo['content']}}</p>
         <p>{{$date}}</p>
         <p>{{$tweetInfo['name']}}</p>
-        <form action="/confirmDelete" method="post">
-            @csrf
-        <button type="submit" name="tweetId" value={{$tweetInfo['tweetId']}}>Delete</button>
-        </form>
+        @include('partialconfirmDelete')
         <form action="/editForm" method="post">
             @csrf
         <button type="submit" name="tweetId" value={{$tweetInfo['tweetId']}}>Edit</button>

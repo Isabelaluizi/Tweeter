@@ -24,7 +24,6 @@ class followController extends Controller
             foreach ($findFollows as $findFollow) {
                 \App\Follow::destroy($findFollow->id);
             }
-
         }
         return redirect ('/userProfile');
     }

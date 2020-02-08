@@ -61,7 +61,7 @@ class userController extends Controller
     }
     function editForm (Request $request) {
         $tweet= \App\Tweet::find($request->tweetId);
-        return view('editForm',['tweet'=>$tweet]);
+        return view('editTweetForm',['tweet'=>$tweet]);
     }
     function editTweet (Request $request) {
         $tweet = \App\Tweet::find($request->tweetId);

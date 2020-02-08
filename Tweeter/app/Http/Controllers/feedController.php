@@ -12,11 +12,11 @@ class feedController extends Controller
     function showTweets () {
         if (Auth::check()) {
         $tweets= \App\Tweet::orderBy("created_at", "desc")->get();
+        $checkLikes =\App\Like::all();
             $tweetInfo=[];
             foreach($tweets as $tweet) {
                 $likes=\App\Like::where("tweet_id","$tweet->id")->get();
-                $num=count($likes);
-                error_log($num);
+                $numLikes=count($likes);
                 $userId=$tweet->user_id;
                 array_push ($tweetInfo,[
                     "userId"=> "$userId",
@@ -24,9 +24,10 @@ class feedController extends Controller
                     "name"=> \App\User::find($userId)->name,
                     "content" =>"$tweet->content",
                     "created_at" =>"$tweet->created_at",
+                    "numLikes" => "$numLikes"
                 ]);
             }
-            return view('readTweets', ['tweetsInfo'=>$tweetInfo]);
+            return view('readTweets', ['tweetsInfo'=>$tweetInfo],['checkLikes'=>$checkLikes]);
         } else {
             return redirect('home');
         }
@@ -83,12 +84,21 @@ class feedController extends Controller
             $comment->save();
             return redirect ('readTweets');
     }
-    function addlike (Request $request) {
+    function addLike (Request $request) {
         $like = new \App\Like;
         $like->user_id = Auth::user()->id;
         $like->tweet_id = $request->tweetId;
         $like->save();
         return redirect ('readTweets');
     }
+    function deleteLike (Request $request) {
+        $likes=\App\Like::where('user_id',Auth::user()->id)->where('tweet_id',$request->tweetId)->get();
+        foreach($likes as $like) {
+            \App\Like::destroy($like
+            ->id);
+        }
+        return redirect ('readTweets');
+    }
+
 
 }

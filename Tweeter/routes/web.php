@@ -37,4 +37,5 @@ Route::get('/readTweets/{tweetId}', 'feedController@showComments'); //show tweet
 Route::post('deleteComment', 'feedController@deleteComment'); //is deleting a comment
 Route::post('/editCommentForm','feedController@editCommentForm'); //showing edit form
 Route::post('/editComment','feedController@editComment'); //update comment
-Route::post('/likeTweet','feedController@addlike'); //filling the database
+Route::post('/likeTweet','feedController@addLike'); //filling the database
+Route::post('/unlikeTweet', 'feedController@deleteLike');
