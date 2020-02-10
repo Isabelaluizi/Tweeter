@@ -43,7 +43,7 @@ class userController extends Controller
     }
     function updateProfile(Request $request) {
         \App\User::where('id', Auth::user()->id)->update(['name' => $request->name, 'email' => $request->email, 'created_at'=>$request->created_at]);
-        return view('userProfile');
+        return redirect('userProfile');
     }
     function deleteProfile(Request $request) {
         \App\User::destroy(Auth::user()->id);
