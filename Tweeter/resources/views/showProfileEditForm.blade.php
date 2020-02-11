@@ -11,5 +11,9 @@
         <input type="hidden" name="created_at" value="{{Auth::user()->created_at}}" required>
         <input type="submit" value="Save">
     </form>
+    <form action="/deleteProfile" method="post">
+        @csrf
+        <button class="btn" type="submit" value="Delete"> Delete profile</button>
+        </form>
 
 @endsection
