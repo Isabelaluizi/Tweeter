@@ -34,7 +34,7 @@
             <div class="col s7 m8 l7 xl8 center-align">
                 <form action="/findUsers" method="post">
                     @csrf
-                    <button class="center-align waves-effect waves-light btn green lighten-1 valign-wrapper" type="submit" value="findUsers"><i class="material-icons valign-wrapper">search</i>Find users </button>
+                    <button class="center-align waves-effect waves-light btn green lighten-1 valign-wrapper" type="submit" value="findUsers"><i class="material-icons left">search</i>Find users </button>
                 </form>
             </div>
         </div>

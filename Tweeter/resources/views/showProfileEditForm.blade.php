@@ -11,18 +11,16 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">account_circle</i>
-                    <input id="username" type="text" name="name" value="{{Auth::user()->name}}" class="validate">
+                    <input id="username" type="text" name="name" value="{{Auth::user()->name}}" required>
                     <label for="username">Name</label>
                 </div>
                 <div class="input-field col s12">
                     <i class="material-icons prefix">email</i>
-                    <input id="email" type="text" name="email" value="{{Auth::user()->email}}" class="validare">
+                    <input id="email" type="text" name="email" value="{{Auth::user()->email}}" required>
                     <label for="email">E-mail</label>
                     <input type="hidden" name="created_at" value="{{Auth::user()->created_at}}">
                 </div>
-                <div class="col s12 center-align">
-                <button class="waves-effect waves-light btn green lighten-1" type="submit" value="Save">Submit<i class="material-icons right">send</i></button>
-                </div>
+                <button class="waves-effect waves-light btn-small green lighten-1" type="submit" value="Save">Submit<i class="material-icons right">send</i></button>
             </div>
         </form>
         <div class="row">
