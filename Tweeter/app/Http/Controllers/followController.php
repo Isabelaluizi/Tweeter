@@ -25,6 +25,6 @@ class followController extends Controller
                 \App\Follow::destroy($findFollow->id);
             }
         }
-        return redirect ('/userProfile');
+        return redirect ('/findUsers');
     }
 }

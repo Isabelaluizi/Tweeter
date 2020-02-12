@@ -1,19 +1,36 @@
 @extends('layouts.app')
 
 @section('content')
-
-    <form action="updateProfile" method="post">
-        @csrf
-        <p>Name:</p>
-        <input type="text" name="name" value="{{Auth::user()->name}}" required>
-        <p>Email:</p>
-        <input type="text" name="email" value="{{Auth::user()->email}}" required>
-        <input type="hidden" name="created_at" value="{{Auth::user()->created_at}}" required>
-        <input type="submit" value="Save">
-    </form>
-    <form action="/deleteProfile" method="post">
-        @csrf
-        <button class="btn" type="submit" value="Delete"> Delete profile</button>
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <br>
+        </div>
+        <form class="col s12" action="updateProfile" method="post">
+            @csrf
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input id="username" type="text" name="name" value="{{Auth::user()->name}}" class="validate">
+                    <label for="username">Name</label>
+                </div>
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">email</i>
+                    <input id="email" type="text" name="email" value="{{Auth::user()->email}}" class="validare">
+                    <label for="email">E-mail</label>
+                    <input type="hidden" name="created_at" value="{{Auth::user()->created_at}}">
+                </div>
+                <div class="col s12 center-align">
+                <button class="waves-effect waves-light btn green lighten-1" type="submit" value="Save">Submit<i class="material-icons right">send</i></button>
+                </div>
+            </div>
         </form>
-
+        <div class="row">
+            <form class="col s12 center-align" action="/deleteProfile" method="post">
+                @csrf
+                <button class="waves-effect waves-light btn green lighten-1" type="submit" value="Delete"><i class="material-icons left">delete</i> Delete profile</button>
+            </form>
+        </div>
+    </div>
+</div>
 @endsection

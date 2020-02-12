@@ -25,6 +25,7 @@ Route::post('/deleteProfile', 'userController@deleteProfile');
 Route::post('/confirmDelete', 'userController@confirmDelete'); //is confirming if the user wants to delete
 Route::post('/deleteTweet', 'userController@deleteTweet'); //is deleting a tweet if the user confirmed
 Route::post('/findUsers','followController@showUsers'); // when an user click in find user, this route goes to show all users
+Route::get('/findUsers','followController@showUsers');
 Route::post('/followUser','followController@changeFollow'); // is creating relationship between the users (follow or unfollow)
 Route::post('/createForm', 'userController@createForm'); // form to create a new tweet
 Route::post('/createTweet', 'userController@createTweet'); // create a new tweet
