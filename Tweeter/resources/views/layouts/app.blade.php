@@ -27,7 +27,7 @@
 
         <nav class="nav-extended green lighten-5">
             <div class="nav-wrapper">
-                <a class="green-text text-darken-4" href="#" class="brand-logo"><img src="images/twitter-4-48.png"><strong>Tweeter</strong></a>
+                <a class="green-text text-darken-4" href="#" class="brand-logo"><img src="{{url('/images/twitter-4-48.png')}}"><strong>Tweeter</strong></a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul id="nav-mobile" class=" right hide-on-med-and-down">
                   <li><a href="{{ url('/home') }}"><h5 class="green-text text-darken-4"><strong>Home</strong></h5></a></li>

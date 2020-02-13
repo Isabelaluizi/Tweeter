@@ -13,8 +13,15 @@
 
 @section ('content')
 
+
+<h4 class="center-align">Tweets</h4>
 @include('createTweetForm')
+
 <div class="container">
+    <br>
+<div class="divider"></div>
+<br>
+
  @foreach ($tweetsInfo as $tweetInfo)
             @php
             $date=$tweetInfo['created_at'];
@@ -30,11 +37,13 @@
                                 <div class="col s6 center-align">
                                     <h6 class="black-text">{{$date}}</h6>
                         </div>
-                        <div class="col s12 center-align">
+                            <div class="col s12 center-align">
                                     <p class="black-text">{{$tweetInfo['content']}}</p>
-                        </div>
+                            </div>
                             </a>
+
                             @if($tweetInfo['userId']==Auth::user()->id)
+
                             <div class="col s3 center-align">
                                 @include('partialconfirmDelete')
                             </div>

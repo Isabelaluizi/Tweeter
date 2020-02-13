@@ -5,7 +5,7 @@
     <div class="row">
         <div>
             <div>
-                <div class="col s12 green-text center-align"><h5>{{ __('Register') }}</h5></div>
+                <div class="col s12 center-align"><h5 class="green-text text-dark-4">{{ __('Register') }}</h5></div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">

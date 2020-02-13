@@ -38,8 +38,9 @@
                 </form>
             </div>
         </div>
+        <br>
 
-
+        <div class="divider"></div>
         <div class="row valign-wrapper">
             <div class="col l2 xl4">
             </div>

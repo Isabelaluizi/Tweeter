@@ -6,7 +6,7 @@
         <div class="col s12">
             <br>
             <div>
-                <div class="col s12 center-align green-text"><h5>{{ __('Login') }}</h5></div>
+                <div class="col s12 center-align"><h5 class="green-text text-dark-4">{{ __('Login') }}</h5></div>
 
                 <div>
                     <form method="POST" action="{{ route('login') }}">
@@ -56,7 +56,7 @@
                         <div class="row">
                             <div class="col s12">
                                 @if (Route::has('password.request'))
-                                    <a class="green-text" href="{{ route('password.request') }}">
+                                    <a class="green-text text-dark-4" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
