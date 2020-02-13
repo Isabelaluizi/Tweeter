@@ -14,41 +14,64 @@
 @section ('content')
 
 @include('createTweetForm')
-
+<div class="container">
  @foreach ($tweetsInfo as $tweetInfo)
             @php
             $date=$tweetInfo['created_at'];
             $date=substr($date,0,10);
             @endphp
-            <a href="/readTweets/{{$tweetInfo['tweetId']}}">
-                <p>{{$tweetInfo['content']}}</p>
-                <p>{{$date}}</p>
-                <p>{{$tweetInfo['name']}}</p>
-            </a>
+            <div class="row">
+                <div class="col s12">
+                    <div class="card-panel grey lighten-3">
+                            <a href="/readTweets/{{$tweetInfo['tweetId']}}">
+                                <div class="col s6 center-align">
+                                    <h6 class="black-text"><strong>{{$tweetInfo['name']}}</strong></h6>
+                                </div>
+                                <div class="col s6 center-align">
+                                    <h6 class="black-text">{{$date}}</h6>
+                        </div>
+                        <div class="col s12 center-align">
+                                    <p class="black-text">{{$tweetInfo['content']}}</p>
+                        </div>
+                            </a>
+                            @if($tweetInfo['userId']==Auth::user()->id)
+                            <div class="col s3 center-align">
+                                @include('partialconfirmDelete')
+                            </div>
+                            <div class="col s3 center-align">
+                                @include('partialeditForm')
+                            </div>
+                                @endif
+                                <div class="col s3">
+                            <form class="center-align" action="/commentForm" method="post">
+                                @csrf
+                            <button class="waves-effect waves-teal btn-flat green-text text-dark " type="submit" name="tweetId" value={{$tweetInfo['tweetId']}}><i class="material-icons green-text text-lighten-1 left">mode_comment</i>Comment</button>
+                            </form>
+                        </div>
+                            @if(checkLike($tweetInfo['tweetId'],$checkLikes))
+                            <form class="right-align" action="/unlikeTweet" method="post">
+                                @csrf
+                            <button  class="waves-effect waves-teal btn-flat" type="submit" name="tweetId" value={{$tweetInfo['tweetId']}}><i class="material-icons pink-text text-lighten-3">favorite</i></button>
+                            <span class="pink-text text-lighten-3">{{$tweetInfo['numLikes']}}</span>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                            @else
+                            <form  class="right-align" action="/likeTweet" method="post">
+                            @csrf
+                            <button class="waves-effect waves-teal btn-flat" type="submit" name="tweetId" value={{$tweetInfo['tweetId']}}><i class="material-icons pink-text text-lighten-3">favorite_border</i></button>
+                            <span class="pink-text text-lighten-3">{{$tweetInfo['numLikes']}}</span>
+                            </form>
+                    </div>
+                </div>
+            </div>
+                            @endif
 
-            <form action="/commentForm" method="post">
-                @csrf
-                <button type="submit" name="tweetId" value={{$tweetInfo['tweetId']}}>Comment</button>
-            </form>
-            @if(checkLike($tweetInfo['tweetId'],$checkLikes))
-                <form action="/unlikeTweet" method="post">
-                    @csrf
-                    <button type="submit" name="tweetId" value={{$tweetInfo['tweetId']}}>Unlike</button>
-                    <span>Likes:{{$tweetInfo['numLikes']}}</span>
-                </form>
-            @else
-                <form action="/likeTweet" method="post">
-                    @csrf
-                    <button type="submit" name="tweetId" value={{$tweetInfo['tweetId']}}>Like</button>
-                    <span>Likes:{{$tweetInfo['numLikes']}}</span>
-                </form>
-            @endif
-            @if($tweetInfo['userId']==Auth::user()->id)
-            @include('partialconfirmDelete')
-            @include('partialeditForm')
-        @endif
+
+
 
 
 @endforeach
-
+            </div>
  @endsection

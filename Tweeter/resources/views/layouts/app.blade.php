@@ -24,41 +24,23 @@
 </head>
 <body>
     <div id="app">
-        {{-- <nav>
-            <div class="nav-wrapper">
-              <a href="#!" class="brand-logo">Logo</a>
-              <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-              <ul class="right hide-on-med-and-down">
-                <li><a href="sass.html">Sass</a></li>
-                <li><a href="badges.html">Components</a></li>
-                <li><a href="collapsible.html">Javascript</a></li>
-                <li><a href="mobile.html">Mobile</a></li>
-              </ul>
-            </div>
-          </nav>
 
-          <ul class="sidenav" id="mobile-demo">
-            <li><a href="sass.html">Sass</a></li>
-            <li><a href="badges.html">Components</a></li>
-            <li><a href="collapsible.html">Javascript</a></li>
-            <li><a href="mobile.html">Mobile</a></li>
-          </ul> --}}
-        <nav class="nav-extended green dark-1">
+        <nav class="nav-extended green lighten-5">
             <div class="nav-wrapper">
-                <a href="#" class="brand-logo">Tweeter</a>
+                <a class="green-text text-darken-4" href="#" class="brand-logo"><img src="images/twitter-4-48.png"><strong>Tweeter</strong></a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-                  <li><a href="{{ url('/home') }}"><strong><h5>Home</strong></h5></a></li>
-                  <li><a href="{{ url('/readTweets') }}"><strong><h5>Tweets</strong></h5></a></li>
+                <ul id="nav-mobile" class=" right hide-on-med-and-down">
+                  <li><a href="{{ url('/home') }}"><h5 class="green-text text-darken-4"><strong>Home</strong></h5></a></li>
+                  <li><a href="{{ url('/readTweets') }}"><strong><h5 class="green-text text-darken-4">Tweets</strong></h5></a></li>
                 @guest
-                    <li><a href="{{ route('login') }}"><strong><h5>{{ __('Login') }}</strong></h5></a></li>
+                    <li><a href="{{ route('login') }}"><strong><h5 class="green-text text-darken-4">{{ __('Login') }}</strong></h5></a></li>
                 @if (Route::has('register'))
-                    <li><a href="{{ route('register') }}"><strong><h5>{{ __('Register') }}</strong></h5></a></li>
+                    <li><a href="{{ route('register') }}"><strong><h5 class="green-text text-darken-4">{{ __('Register') }}</strong></h5></a></li>
                 @endif
                 @else
                     <li><a href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
-                                                    document.getElementById('logout-form').submit();"><strong><h5>
+                                                    document.getElementById('logout-form').submit();"><h5 class="green-text text-darken-4"><strong>
                                     {{ __('Logout') }}</strong></h5>
                             </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST">
@@ -69,18 +51,19 @@
                 </ul>
             </div>
         </nav>
-            <ul class="sidenav" id="mobile-demo">
+            <ul class="sidenav green lighten-5" id="mobile-demo">
                 <div class="row">
                 <li>
                     <div class="col s6">
-                    <a class="text-black" href="{{ url('/home') }}"><strong>Home</strong></a>
+                        <img src="images/twitter-4-48.png">
+                    <a href="{{ url('/home') }}"><h5 class="green-text text-darken-4"><strong>Home</strong></h5></a>
                     </div>
                     <div class="col s6 right-align">
-                    <a href="{{ url('/home') }}"><i class="material-icons">close</i></a>
+                    <a class="green-text text-darken-4" href="{{ url('/home') }}"><i class="material-icons right">close</i></a>
                     </div>
                 </li>
                 <li><div class="col s12 left-align">
-                    <a href="{{ url('/readTweets') }}"><strong>Tweets</strong></a>
+                    <a href="{{ url('/readTweets') }}"><h5 class="green-text text-darken-4"><strong>Tweets</strong></h5></a>
                     </div></li>
                 @guest
                  <li><div class="col s12 left-align"><a href="{{ route('login') }}">{{ __('Login') }}</a></li>
@@ -91,8 +74,8 @@
                 @else
                 <li><div class="col s12 left-align"><a class="dropdown-item" href="{{ route('logout') }}"
                               onclick="event.preventDefault();
-                                              document.getElementById('logout-form').submit();"><strong>
-                              {{ __('Logout') }}</strong>
+                                              document.getElementById('logout-form').submit();"><h5 class="green-text text-darken-4"><strong>
+                              {{ __('Logout') }}</strong></h5>
                       </a>
                       <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                           @csrf

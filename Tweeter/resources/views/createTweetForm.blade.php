@@ -1,9 +1,10 @@
 <div class="container">
     <div class="row">
-        <form class="s12" action="/createTweet" method="post">
+        <form class="col s12" action="/createTweet" method="post">
             @csrf
             <div class="input-field col s12">
-                <input id="tweetContent" type="text" name="content" value="" required>
+                <textarea id="tweetContent" class="materialize-textarea" type="text" name="content" value="" required></textarea>
+                {{-- <input id="tweetContent" type="text" name="content" value="" required> --}}
                 <label for="tweetContent">What´s happening?</label>
             </div>
             <div class="col s12 center-align">

@@ -9,7 +9,7 @@
                 <h4 class="center-align"> Welcome, {{Auth::user()->name}} </h4>
             </div>
             <div class="col s12">
-                <h6 class="center-align"><strong>Joined</strong> {{Auth::user()->created_at->format('m/Y')}}</h6>
+                <h6 class="center-align"><i class="material-icons center">date_range</i><strong>Joined</strong> {{Auth::user()->created_at->format('Y-m-d')}}</h6>
             </div>
         </div>
 

@@ -3,6 +3,9 @@
 @section ('content')
 <div class="container">
     <div class="row">
+        <div class="s12">
+            <br><br><br><br>
+        </div>
         <form class="col s12" action="/editTweet" method="post">
             @csrf
             <div class="row">

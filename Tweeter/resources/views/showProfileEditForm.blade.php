@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col s12">
-            <br>
+            <br><br><br>
         </div>
         <form class="col s12" action="updateProfile" method="post">
             @csrf
@@ -20,7 +20,9 @@
                     <label for="email">E-mail</label>
                     <input type="hidden" name="created_at" value="{{Auth::user()->created_at}}">
                 </div>
+                <div class="col s12 right-align">
                 <button class="waves-effect waves-light btn-small green lighten-1" type="submit" value="Save">Submit<i class="material-icons right">send</i></button>
+                </div>
             </div>
         </form>
         <div class="row">
