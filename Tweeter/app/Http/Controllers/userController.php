@@ -25,7 +25,7 @@ class userController extends Controller
             }
             return view('userProfile',['tweetsInfo'=>$tweetInfo]);
         } else {
-            return redirect('/');
+            return redirect('readTweets');
         }
     }
     function confirmDelete (Request $request) {
@@ -42,12 +42,42 @@ class userController extends Controller
         return view('showProfileEditForm');
     }
     function updateProfile(Request $request) {
-        \App\User::where('id', Auth::user()->id)->update(['name' => $request->name, 'email' => $request->email, 'created_at'=>$request->created_at]);
-        return redirect('userProfile');
+        $checkname=\App\User::where('name',$request->name)->get();
+        $checkemail=\App\User::where('email',$request->email)->get();
+        if($checkname->count()!=0) {
+             return view('showProfileEditFormError1');
+         } elseif ($checkemail->count()!=0) {
+             return view('showProfileEditFormError2');
+         } else {
+            \App\User::where('id', Auth::user()->id)->update(['name' => $request->name, 'email' => $request->email, 'created_at'=>$request->created_at]);
+            return redirect('userProfile');
+        }
+    }
+    function confirmDeleteProfile(Request $request) {
+        return view('confirmDeleteProfile');
     }
     function deleteProfile(Request $request) {
-        \App\User::destroy(Auth::user()->id);
-        return redirect('/');
+        if($request->option=="yes") {
+            $tweets = Auth::user()->tweets;
+            $comments = Auth::user()->comments;
+            $likes = Auth::user()->likes;
+            $follows = Auth::user()->follows;
+            foreach ($tweets as $tweet) {
+                \App\Tweet::destroy($tweet->id);
+            }
+            foreach ($comments as $comment) {
+                \App\Comment::destroy($comment->id);
+            }
+            foreach ($likes as $like) {
+                \App\Like::destroy($like->id);
+            }
+            foreach ($follows as $follow) {
+                \App\Follow::destroy($follow->id);
+            }
+            \App\User::destroy(Auth::user()->id);
+            return redirect('/');
+        }
+        return redirect('userProfile');
     }
     function createForm () {
         return view('createForm');

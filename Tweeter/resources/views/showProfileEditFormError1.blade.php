@@ -13,6 +13,7 @@
                     <i class="material-icons prefix">account_circle</i>
                     <input id="username" type="text" name="name" value="{{Auth::user()->name}}" required>
                     <label for="username">Name</label>
+                    <p class="red-text center-align">This name has already existed. Choose another one.</p>
                 </div>
                 <div class="input-field col s12">
                     <i class="material-icons prefix">email</i>

@@ -27,4 +27,14 @@ class followController extends Controller
         }
         return redirect ('/findUsers');
     }
+    function searchUser (Request $request) {
+        $users=\App\User::where('name',$request->searchName)->get();
+        error_log($users);
+        $follows=\App\Follow::all();
+        if($users->count()!=0) {
+                return view('users',['users'=>$users],['follows'=>$follows]);
+        } else {
+            return view('notFoundUser');
+        }
+    }
 }

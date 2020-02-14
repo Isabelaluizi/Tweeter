@@ -18,6 +18,7 @@
                     <i class="material-icons prefix">email</i>
                     <input id="email" type="text" name="email" value="{{Auth::user()->email}}" required>
                     <label for="email">E-mail</label>
+                    <p class="red-text center-align">This email has already existed. Choose another one.</p>
                     <input type="hidden" name="created_at" value="{{Auth::user()->created_at}}">
                 </div>
                 <div class="col s12 right-align">
