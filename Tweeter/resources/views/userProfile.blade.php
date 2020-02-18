@@ -11,7 +11,7 @@
             <div class="col s6 xl2 offset xl4 center-align">
                 <img src="{{url('/images/profilerobot.png')}}" id="avatar">
             </div>
-            <div class="col s6 xl6 center-align valign-wrapper">
+            <div class="col s6 xl5 offset-xl1 center-align valign-wrapper">
                 <h5> Welcome, {{Auth::user()->name}} </h5>
             </div>
             <div class="col s12">

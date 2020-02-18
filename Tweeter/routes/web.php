@@ -38,6 +38,7 @@ Route::get('/readTweets','feedController@showTweets'); //page to read all tweets
 Route::post('/commentForm','feedController@commentForm'); // page to comment one tweet - form
 Route::post('/commentTweet', 'feedController@commentTweet'); // add comment on database
 Route::get('/readTweets/{tweetId}', 'feedController@showComments'); //show tweet and comments related to tweet
+Route::post('/confirmDeleteComment','feedController@confirmDeleteComment'); //Is confirming to delete a comment
 Route::post('deleteComment', 'feedController@deleteComment'); //is deleting a comment
 Route::post('/editCommentForm','feedController@editCommentForm'); //showing edit form
 Route::post('/editComment','feedController@editComment'); //update comment

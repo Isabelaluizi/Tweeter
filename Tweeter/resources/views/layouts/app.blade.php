@@ -62,7 +62,7 @@
                 <div class="row">
                 <li>
                     <div class="col s12 left-align">
-                        <img src="images/twitter-4-48.png">
+                        <img src="{{url('/images/twitter-4-48.png')}}">
                     </div>
                 </li>
                 <li>

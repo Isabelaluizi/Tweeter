@@ -14,14 +14,25 @@
         <div class="col s12">
             <div class="card grey lighten-3">
                 <div class="row">
-                    <div class="col s6 center-align">
-                        <h5>{{$tweetInfo['name']}}</h5>
+                    <div class=" s12">
+                        <br>
                     </div>
-                    <div class="col s6 center-align">
-                        <h5>{{$date}}</h5>
+                    <div class="col s1 m1 xl1">
                     </div>
-                    <div class="col s12 center-align">
-                        <h5>{{$tweetInfo['content']}}</h5>
+                    <div class="col s5  m2 xl2 left-align">
+                    <img src="{{url('/images/profilerobot2.png')}}" id="avatar">
+                    </div>
+                    <div class="col s6 m5 xl5 center-align">
+                        <h6>{{$tweetInfo['name']}}</h6>
+                    </div>
+                    <div class="col s12 m4 xl4 center-align">
+                        <h6>{{$date}}</h6>
+                    </div>
+                    <div class="col s10 offset-s1 center-align">
+                        <h6>{{$tweetInfo['content']}}</h6>
+                    </div>
+                    <div class="col s12">
+                        <br>
                     </div>
                 </div>
             </div>
@@ -35,21 +46,31 @@
             $date=$commentInfo['created_at'];
             $date=substr($date,0,10);
             @endphp
+            <br>
             @if ($commentInfo['commentuserId'] == Auth::user()->id)
             <div class="row center-align">
-                <div class="col s6 center-align">
+                <div class=" s12">
+                    <br>
+                </div>
+                <div class="col s1 m1 xl1">
+                </div>
+                <div class="col s5  m2 xl2 left-align">
+                <img src="{{url('/images/profilerobot.png')}}" id="avatar">
+                </div>
+                <div class="col s6 m5 xl5 center-align">
             <p>{{$commentInfo['name']}}</p>
             </div>
-            <div class="col s6 center-align">
+            <div class="col s12 m4 xl4 center-align">
                 <p>{{$date}}</p>
             </div>
             <div class="col s12 center-align">
             <p>{{$commentInfo['comment']}}</p>
             </div>
             <div class="col s6 center-align">
-            <form action="/deleteComment" method="post">
+            <form action="/confirmDeleteComment" method="post">
                 @csrf
                 <button class="waves-effect waves-teal btn-flat green-text text-dark" type="submit" name="commentId" value={{$commentInfo['commentId']}}><i class="material-icons green-text text-lighten-1 left">delete</i>Delete</button>
+                <input type="hidden" name="tweetId" value={{$tweetInfo['tweetId']}}>
             </form>
         </div>
         <div class="col s6 center-align">
@@ -61,10 +82,15 @@
     </div>
             @else
             <div class="row center-align">
-                <div class="col s6 center-align">
+                <div class="col s1 m1">
+                </div>
+                <div class="col s5  m2 xl2 left-align">
+                <img src="{{url('/images/profilerobot.png')}}" id="avatar">
+                </div>
+                <div class="col s6 m5 xl5 center-align">
                 <p>{{$commentInfo['name']}}</p>
                 </div>
-                <div class="col s6 center-align">
+                <div class="col s12 m4 xl4 center-align">
                 <p>{{$date}}</p>
                 </div>
                 <div class="col s12 center-align">

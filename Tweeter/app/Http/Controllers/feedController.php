@@ -76,9 +76,14 @@ class feedController extends Controller
     }
         return view ('showTweetInfo', ['tweetInfo'=>$tweetInfo], ['commentsInfo'=>$commentsInfo]);
     }
+    function confirmDeleteComment (Request $request) {
+        return view('confirmDeleteComment', ['ids'=>$request]);
+    }
     function deleteComment (Request $request) {
+        if($request->option=="yes") {
         \App\Comment::destroy($request->commentId);
-        return redirect ('readTweets');
+        }
+        return redirect ("/readTweets/$request->tweetId");
     }
     function editCommentForm (Request $request) {
         $comment=\App\Comment::find($request->commentId);
@@ -89,7 +94,7 @@ class feedController extends Controller
             $comment->content = $request->comment;
             $comment->created_at = $request->created_at;
             $comment->save();
-            return redirect ('readTweets');
+            return redirect ("/readTweets/$request->tweetId");
     }
     function addLike (Request $request) {
         $like = new \App\Like;
