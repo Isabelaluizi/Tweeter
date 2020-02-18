@@ -19,7 +19,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/userProfile', 'userController@showProfile');
-Route::post('editProfile', 'userController@showProfileEdit');
+Route::get('/editProfile', 'userController@showProfileEdit');
+Route::post('/editProfile', 'userController@showProfileEdit');
 Route::post('/updateProfile', 'userController@updateProfile');
 Route::post('/confirmDeleteProfile', 'userController@confirmDeleteProfile');
 Route::post('/deleteProfile', 'userController@deleteProfile');

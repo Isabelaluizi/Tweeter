@@ -13,11 +13,13 @@
                     <i class="material-icons prefix">account_circle</i>
                     <input id="username" type="text" name="name" value="{{Auth::user()->name}}" required>
                     <label for="username">Name</label>
+                    <p class="center-align red-text"> {{$errors->first('name')}} </p>
                 </div>
                 <div class="input-field col s12">
                     <i class="material-icons prefix">email</i>
                     <input id="email" type="text" name="email" value="{{Auth::user()->email}}" required>
                     <label for="email">E-mail</label>
+                    <p class="center-align red-text"> {{$errors->first('email')}} </p>
                     <input type="hidden" name="created_at" value="{{Auth::user()->created_at}}">
                 </div>
                 <div class="col s12 right-align">

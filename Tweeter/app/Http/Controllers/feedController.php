@@ -16,7 +16,9 @@ class feedController extends Controller
             $tweetInfo=[];
             foreach($tweets as $tweet) {
                 $likes=\App\Like::where("tweet_id","$tweet->id")->get();
+                $comments=\App\Comment::where("tweet_id","$tweet->id")->get();
                 $numLikes=count($likes);
+                $numComments=count($comments);
                 $userId=$tweet->user_id;
                 array_push ($tweetInfo,[
                     "userId"=> "$userId",
@@ -24,7 +26,8 @@ class feedController extends Controller
                     "name"=> \App\User::find($userId)->name,
                     "content" =>"$tweet->content",
                     "created_at" =>"$tweet->created_at",
-                    "numLikes" => "$numLikes"
+                    "numLikes" => "$numLikes",
+                    "numComments" => "$numComments"
                 ]);
             }
             return view('readTweets', ['tweetsInfo'=>$tweetInfo],['checkLikes'=>$checkLikes]);
@@ -39,7 +42,6 @@ class feedController extends Controller
         return view('commentForm', ['tweet'=>$tweet],['username'=>$userName]);
     }
     function commentTweet (Request $request) {
-        error_log($request->tweetId);
         $tweet=\App\Tweet::find($request->tweetId);
         $comment = new \App\Comment;
         $comment->user_id = Auth::user()->id;
@@ -50,6 +52,10 @@ class feedController extends Controller
     }
     function showComments ($tweetId) {
         $tweet= \App\Tweet::find($tweetId);
+        $count= \App\Tweet::where('id',$tweetId)->get();
+        if(count($count)==0) {
+            abort(403, 'Page not found');
+        }else {
         $comments= \App\Comment::where('tweet_id',"$tweetId")->orderBy("created_at", "desc")->get();
         $tweetInfo = [
             "userId"=> "$tweet->user_id",
@@ -67,6 +73,7 @@ class feedController extends Controller
             "comment" => "$comment->content",
             "created_at" => "$comment->created_at"]);
         }
+    }
         return view ('showTweetInfo', ['tweetInfo'=>$tweetInfo], ['commentsInfo'=>$commentsInfo]);
     }
     function deleteComment (Request $request) {

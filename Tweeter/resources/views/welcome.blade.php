@@ -87,7 +87,7 @@
                         <img src="images/bird.jpg" width=50%>
                     </div>
                     <div class="col s12 center-align">
-                        <h3 class="green-text text-darken-2">See what’s happening in the world right now</h3>
+                        <h5 class="green-text text-darken-2">See what’s happening in the world right now</h5>
                     </div>
                 </div>
             </div>

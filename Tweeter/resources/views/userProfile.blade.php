@@ -6,7 +6,13 @@
 
         <div class="row">
             <div class="col s12">
-                <h4 class="center-align"> Welcome, {{Auth::user()->name}} </h4>
+                <br>
+            </div>
+            <div class="col s6 xl2 offset xl4 center-align">
+                <img src="{{url('/images/profilerobot.png')}}" id="avatar">
+            </div>
+            <div class="col s6 xl6 center-align valign-wrapper">
+                <h5> Welcome, {{Auth::user()->name}} </h5>
             </div>
             <div class="col s12">
                 <h6 class="center-align"><i class="material-icons center">date_range</i><strong>Joined</strong> {{Auth::user()->created_at->format('Y-m-d')}}</h6>
@@ -62,10 +68,18 @@
             <div class="col s12 l12">
                 <div class="card grey lighten-3">
                     <div class="row">
-                        <div class="col s7 l6">
+                        <div class="col s12">
+                            <br>
+                        </div>
+                        <div class="col s1 m1 xl1">
+                        </div>
+                        <div class="col s5 m3 xl3">
+                            <img src="{{url('/images/profilerobot.png')}}" id="avatar">
+                        </div>
+                        <div class="col s6 m4 xl4">
                             <h6 class="center-align"><strong>{{$tweetInfo['name']}}</strong></h6>
                         </div>
-                        <div class="col s5 l6">
+                        <div class="col s12 m4 xl4">
                             <p class="center-align">{{$date}}</p>
                         </div>
                         <div class="col s10 offset-s1 center-align">

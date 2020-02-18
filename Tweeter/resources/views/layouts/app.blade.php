@@ -21,6 +21,13 @@
     {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        #avatar {
+        border-radius: 100%;
+        background-color: rgb(183, 225, 157);
+        width:50%;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
@@ -28,14 +35,14 @@
         <nav class="nav-extended green lighten-5">
             <div class="nav-wrapper">
                 <a class="green-text text-darken-4" href="#" class="brand-logo"><img src="{{url('/images/twitter-4-48.png')}}"><strong>Tweeter</strong></a>
-                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger green-text text-darken-4"><i class="material-icons">menu</i></a>
                 <ul id="nav-mobile" class=" right hide-on-med-and-down">
                   <li><a href="{{ url('/home') }}"><h5 class="green-text text-darken-4"><strong>Home</strong></h5></a></li>
-                  <li><a href="{{ url('/readTweets') }}"><strong><h5 class="green-text text-darken-4">Tweets</strong></h5></a></li>
+                  <li><a href="{{ url('/readTweets') }}"><h5 class="green-text text-darken-4"><strong>Tweets</strong></h5></a></li>
                 @guest
-                    <li><a href="{{ route('login') }}"><strong><h5 class="green-text text-darken-4">{{ __('Login') }}</strong></h5></a></li>
+                    <li><a href="{{ route('login') }}"><h5 class="green-text text-darken-4"><strong>{{ __('Login') }}</strong></h5></a></li>
                 @if (Route::has('register'))
-                    <li><a href="{{ route('register') }}"><strong><h5 class="green-text text-darken-4">{{ __('Register') }}</strong></h5></a></li>
+                    <li><a href="{{ route('register') }}"><h5 class="green-text text-darken-4"><strong>{{ __('Register') }}</strong></h5></a></li>
                 @endif
                 @else
                     <li><a href="{{ route('logout') }}"
@@ -54,22 +61,29 @@
             <ul class="sidenav green lighten-5" id="mobile-demo">
                 <div class="row">
                 <li>
-                    <div class="col s6">
+                    <div class="col s12 left-align">
                         <img src="images/twitter-4-48.png">
-                    <a href="{{ url('/home') }}"><h5 class="green-text text-darken-4"><strong>Home</strong></h5></a>
-                    </div>
-                    <div class="col s6 right-align">
-                    <a class="green-text text-darken-4" href="{{ url('/home') }}"><i class="material-icons right">close</i></a>
                     </div>
                 </li>
-                <li><div class="col s12 left-align">
+                <li>
+                    <div class="col s12 left-align">
+                    <a href="{{ url('/home') }}"><h5 class="green-text text-darken-4"><strong>Home</strong></h5></a>
+                    </div>
+                </li>
+                <li>
+                    <div class="col s12 left-align">
                     <a href="{{ url('/readTweets') }}"><h5 class="green-text text-darken-4"><strong>Tweets</strong></h5></a>
-                    </div></li>
+                    </div>
+                </li>
                 @guest
-                 <li><div class="col s12 left-align"><a href="{{ route('login') }}">{{ __('Login') }}</a></li>
+                 <li>
+                     <div class="col s12 left-align"><a href="{{ route('login') }}"><h5 class="green-text text-darken-4"><strong>{{ __('Login') }}</strong></h5></a>
+                </li>
                 @if (Route::has('register'))
-                <li><a href="{{ route('register') }}">{{ __('Register') }}</a>
-                </div></li>
+                <li><div class="col s12 left-align">
+                    <a href="{{ route('register') }}"><h5 class="green-text text-darken-4"><strong>{{ __('Register') }}</strong></h5></a>
+                </div>
+                </li>
                 @endif
                 @else
                 <li><div class="col s12 left-align"><a class="dropdown-item" href="{{ route('logout') }}"
@@ -102,8 +116,6 @@
                     </ul>
                 </div> --}}
             {{-- </div> --}}
-
-
         <main>
             @yield('content')
         </main>
