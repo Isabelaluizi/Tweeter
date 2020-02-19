@@ -81,7 +81,7 @@
             @endif
                 <div class="row">
                     <div class="col s12 center-align">
-                        <h1 class="green-text text-darken-2">Tweeter</h1>
+                        <h1 class="green-text text-darken-2">Welcome to Tweeter</h1>
                     </div>
                     <div class="col s12 center-align">
                         <img src="images/bird.jpg" width=50%>

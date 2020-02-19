@@ -1,10 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
     <div class="row">
+        <br><br>
         <div class="col s12">
-            <br>
+
             <div>
                 <div class="col s12 center-align"><h5 class="green-text text-dark-4">{{ __('Login') }}</h5></div>
 

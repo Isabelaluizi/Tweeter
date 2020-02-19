@@ -19,7 +19,7 @@
         <br>
         <form class="center-align" action="findUsers" method="post">
             @csrf
-            <button class="center-align waves-effect waves-light btn green lighten-1 valign-wrapper" type="submit" value="findUsers"> Go back</button>
+            <button class="center-align waves-effect waves-light btn green lighten-1 valign-wrapper" type="submit" value="findUsers"><i class="material-icons left">arrow_back</i>Go back</button>
         </form>
 </div>
 

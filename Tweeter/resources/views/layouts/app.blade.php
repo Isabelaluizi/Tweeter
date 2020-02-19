@@ -67,28 +67,28 @@
                 </li>
                 <li>
                     <div class="col s12 left-align">
-                    <a href="{{ url('/home') }}"><h5 class="green-text text-darken-4"><strong>Home</strong></h5></a>
+                    <a href="{{ url('/home') }}"><h5 class="green-text text-darken-4"><strong><i class="material-icons left">home</i>Home</strong></h5></a>
                     </div>
                 </li>
                 <li>
                     <div class="col s12 left-align">
-                    <a href="{{ url('/readTweets') }}"><h5 class="green-text text-darken-4"><strong>Tweets</strong></h5></a>
+                    <a href="{{ url('/readTweets') }}"><h5 class="green-text text-darken-4"><strong><i class="material-icons left">visibility</i>Tweets</strong></h5></a>
                     </div>
                 </li>
                 @guest
                  <li>
-                     <div class="col s12 left-align"><a href="{{ route('login') }}"><h5 class="green-text text-darken-4"><strong>{{ __('Login') }}</strong></h5></a>
+                     <div class="col s12 left-align"><a href="{{ route('login') }}"><h5 class="green-text text-darken-4"><strong><i class="material-icons left">lock_open</i>{{ __('Login') }}</strong></h5></a>
                 </li>
                 @if (Route::has('register'))
                 <li><div class="col s12 left-align">
-                    <a href="{{ route('register') }}"><h5 class="green-text text-darken-4"><strong>{{ __('Register') }}</strong></h5></a>
+                    <a href="{{ route('register') }}"><h5 class="green-text text-darken-4"><strong><i class="material-icons left">assignment_ind</i>{{ __('Register') }}</strong></h5></a>
                 </div>
                 </li>
                 @endif
                 @else
                 <li><div class="col s12 left-align"><a class="dropdown-item" href="{{ route('logout') }}"
                               onclick="event.preventDefault();
-                                              document.getElementById('logout-form').submit();"><h5 class="green-text text-darken-4"><strong>
+                                              document.getElementById('logout-form').submit();"><h5 class="green-text text-darken-4"><strong><i class="material-icons left">lock_outline</i>
                               {{ __('Logout') }}</strong></h5>
                       </a>
                       <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
