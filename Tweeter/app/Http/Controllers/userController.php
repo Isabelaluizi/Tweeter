@@ -10,6 +10,7 @@ class userController extends Controller
 {
     function showProfile() {
         if(Auth::check()) {
+            $followingUsers= \App\Follow::where("user_id",Auth::user()->id)->get();
             $tweets= \App\Tweet::orderBy("created_at", "desc")->get();
             $tweetInfo=[];
             foreach($tweets as $tweet) {
@@ -22,7 +23,7 @@ class userController extends Controller
                     "created_at" =>"$tweet->created_at",
                 ]);
             }
-            return view('userProfile',['tweetsInfo'=>$tweetInfo]);
+            return view('userProfile',['tweetsInfo'=>$tweetInfo],['following'=>$followingUsers]);
         } else {
             return redirect('readTweets');
         }

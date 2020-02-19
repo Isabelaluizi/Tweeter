@@ -13,7 +13,6 @@ class feedController extends Controller
         if (Auth::check()) {
         $tweets= \App\Tweet::orderBy("created_at", "desc")->get();
         $checkLikes =\App\Like::all();
-
             $tweetInfo=[];
             foreach($tweets as $tweet) {
                 $likes=\App\Like::where("tweet_id","$tweet->id")->get();
